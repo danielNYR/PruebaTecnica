@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import com.prueba.tecnica.neoris.bank.entity.Cuenta;
 import org.springframework.stereotype.Repository;
 
@@ -32,6 +34,7 @@ public class CuentaRepository {
 		return true;
 	}
 	
+	@Transactional
 	public void actualizarSaldoCuenta(Cuenta cuenta) {
 		entityMan.persist(cuenta);
 	}

@@ -36,23 +36,10 @@ public class Movimiento {
 	private Cuenta movimientoCuenta;
 
 	
-	
 	public Movimiento() {
 	}
 
-	
-	public Movimiento(int idMovimiento, String fecha, String tipo, String valor, String saldo,
-			Cuenta movimientoCuenta) {
-		//super();
-		this.idMovimiento = idMovimiento;
-		this.fecha = fecha;
-		this.tipo = tipo;
-		this.valor = valor;
-		this.saldo = saldo;
-		this.movimientoCuenta = movimientoCuenta;
-	}
-	
-	
+
 	public Movimiento(String fecha, String tipo, String valor, String saldo, Cuenta movimientoCuenta) {
 		super();
 		this.fecha = fecha;

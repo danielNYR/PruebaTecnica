@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.prueba.tecnica.neoris.bank.entity.Movimiento;
 import com.prueba.tecnica.neoris.bank.service.imp.MovimientoServiceImpl;
 
+
+
 @Controller
 public class OperationsController {
 
@@ -27,14 +29,14 @@ public class OperationsController {
 	MovimientoServiceImpl movimientoServ;
 	
 	@PostMapping(value = "/movimiento/deposito", consumes = "application/json")
-	public ResponseEntity<Movimiento> registrarDeposito(@RequestParam("monto") String monto, @RequestParam("numeroCuenta") String numeroCuenta){
+	public ResponseEntity<Movimiento> registrarDeposito(@RequestBody String monto, @RequestParam String numeroCuenta){
 		logger.info("Monto: "+monto + ": "+numeroCuenta);
 		return new ResponseEntity<>(movimientoServ.realizarDeposito(Double.parseDouble(monto), Integer.parseInt(numeroCuenta)), HttpStatus.CREATED);
 	}
 	
 	@PostMapping(value = "/movimiento/retiro")
-	public ResponseEntity<Movimiento>registrarRetiro(@RequestAttribute double monto, @RequestAttribute int numeroCuenta){
-		return new ResponseEntity<>(movimientoServ.realizarRetiro(monto, numeroCuenta), HttpStatus.CREATED);
+	public ResponseEntity<Movimiento>registrarRetiro(@RequestParam String monto, @RequestParam String numeroCuenta){
+		return new ResponseEntity<>(movimientoServ.realizarRetiro(Double.parseDouble(monto), Integer.parseInt(numeroCuenta)), HttpStatus.CREATED);
 	}
 	
 	//Operaciones: 
